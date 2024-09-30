@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Frontend System Design Fundamentals</title>
+   <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main id="container">
+ <template id="card_template" >
+   <article class="card">
+     <h3 class="card__title"></h3>
+     <div class="card__body">
+       <div class='card__body__image'></div>
+       <section class='card__body__content'>
+       </section>
+     </div>
+   </article>
+ </template>
+</main>
+</body>
+<script>
+   const container = document.getElementById('container');
+   const template = document.getElementById('card_template')
+   /**
+    * @param {string} title
+    * @param {string} body
+    *
+    * @return {HTMLElement
+    */
+   function createCardComponent(title, body) {
+       // @todo - Implement function
+       // Because article content lies inside of our template this is how we can grab that
+       const card = template.content.cloneNode(true).firstElementChild
+       // Recap of Css Selector Structure https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators 
+       const [ titleElement, bodyElement ] = card.querySelectorAll('.card__title, .card__body')
+       titleElement.textContent = title
+       bodyElement.textContent = body
+       return card
+   }
+
+
+   const component = createCardComponent(
+       "Frontend System Design: Fundamentals",
+       "This is a random body text"
+   );
+
+
+   container.appendChild(component);
+</script>
+</html>
